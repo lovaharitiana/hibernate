@@ -48,10 +48,13 @@ public class VisiterController extends HttpServlet {
             boolean status = new VisiterDao().save(visiter);
             if (status) {
                 request.getSession().setAttribute("sm", "Visite ajoutée avec succès");
+                response.sendRedirect("listeVis.jsp?successMessage=Visite ajoutée avec succès");
+
             } else {
                 request.getSession().setAttribute("em", "Erreur d'ajout de la visite");
+                response.sendRedirect("listeVis.jsp?errorMessage=Erreur d'ajout de la visite");
+
             }
-            request.getRequestDispatcher("/insertVis.jsp").forward(request, response);
         } else if (request.getParameter("update") != null) {
             int id = Integer.parseInt(request.getParameter("id"));
             int codeMed = Integer.parseInt(request.getParameter("codeMed"));
@@ -81,11 +84,14 @@ public class VisiterController extends HttpServlet {
             boolean status = new VisiterDao().update(visiter);
             if (status) {
                 request.getSession().setAttribute("sm", "Visite modifiée avec succès");
+                response.sendRedirect("listeVis.jsp?successMessage=Visite modifiée avec succès");
+
             } else {
                 request.getSession().setAttribute("em", "Erreur de modification de la visite");
+                response.sendRedirect("listeVis.jsp?errorMessage=Erreur de modification de la visite");
+
             }
 
-            request.getRequestDispatcher("/editVis.jsp?id=" + id).forward(request, response);
         } else if (request.getParameter("for").equalsIgnoreCase("delete")) {
             int id = Integer.parseInt(request.getParameter("id"));
             Visiter visite = VisiterDao.findVisiter(id);
@@ -97,8 +103,8 @@ public class VisiterController extends HttpServlet {
                 request.getSession().setAttribute("em", "Erreur de suppression de la visite");
             }
 
-            request.getRequestDispatcher("/listeVis.jsp").forward(request, response);
-        }
+           response.sendRedirect(request.getContextPath() + "/listeVis.jsp");
+       }
     }
 
     @Override

@@ -50,9 +50,12 @@ public class PatientController extends HttpServlet {
             boolean status = new PatientDao().save(patient);
             if (status) {
                 request.getSession().setAttribute("sm", "Patient ajouté avec succès");
-                request.getSession().setAttribute("showDialog", true);
+                response.sendRedirect("listePat.jsp?successMessage=Le patient a été ajouté avec succès");
+
             } else {
                 request.getSession().setAttribute("em", "Erreur d'ajout du patient");
+                response.sendRedirect("listePat.jsp?errorMessage=Erreur d'ajout du patient");
+
             }
 
         } else if (request.getParameter("update") != null) {
@@ -72,12 +75,14 @@ public class PatientController extends HttpServlet {
             boolean status = new PatientDao().update(patient);
             if (status) {
                 request.getSession().setAttribute("sm", "Patient modifié avec succès");
+                response.sendRedirect("listePat.jsp?successMessage=Le patient a été modifié avec succès");
+
             } else {
                 request.getSession().setAttribute("em", "Erreur de modification du patient");
+                 response.sendRedirect("listePat.jsp?errorMessage=Erreur de modification du patient");
+
 
             }
-
-            request.getRequestDispatcher("/editPat.jsp?codePat=" + codePat).forward(request, response);
 
         } else if (request.getParameter("for") != null && request.getParameter("for").equalsIgnoreCase("delete")) {
             int codePat = Integer.parseInt(request.getParameter("codePat"));

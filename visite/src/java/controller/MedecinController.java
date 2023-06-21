@@ -46,12 +46,14 @@ public class MedecinController extends HttpServlet {
             boolean status = new MedecinDao().save(medecin);
             if (status) {
                 request.getSession().setAttribute("sm", "Medecin ajouté avec succès");
+                response.sendRedirect("listeMed.jsp?successMessage=Medecin ajouté avec succès");
+
             } else {
                 request.getSession().setAttribute("em", "Erreur d'ajout du medecin");
+                response.sendRedirect("listeMed.jsp?errorMessage=Erreur d'ajout du medecin");
 
             }
 
-            request.getRequestDispatcher("/insertMed.jsp").forward(request, response);
         } else if (request.getParameter("update") != null) {
             int codeMed = Integer.parseInt(request.getParameter("codeMed"));
             String nomMed = request.getParameter("nomMed");
@@ -67,14 +69,15 @@ public class MedecinController extends HttpServlet {
             boolean status = new MedecinDao().update(medecin);
             if (status) {
                 request.getSession().setAttribute("sm", "Medecin modifié avec succès");
+                response.sendRedirect("listeMed.jsp?successMessage=Medecin modifié avec succès");
+
             } else {
                 request.getSession().setAttribute("em", "Erreur de modification du medecin");
+                response.sendRedirect("listeMed.jsp?errorMessage=Erreur de modification du medecint");
 
             }
 
-            request.getRequestDispatcher("/editMed.jsp?codeMed=" + codeMed).forward(request, response);
-
-        } else if (request.getParameter("for").equalsIgnoreCase("delete")) {
+            } else if (request.getParameter("for").equalsIgnoreCase("delete")) {
             int codeMed = Integer.parseInt(request.getParameter("codeMed"));
             Medecin m = MedecinDao.findMedecin(codeMed);
             boolean status = new MedecinDao().delete(m);
@@ -84,7 +87,7 @@ public class MedecinController extends HttpServlet {
                 request.getSession().setAttribute("em", "Erreur de suppression du medecin");
 
             }
-             request.getRequestDispatcher("/listeMed.jsp").forward(request, response);
+            request.getRequestDispatcher("/listeMed.jsp").forward(request, response);
 
         }
 

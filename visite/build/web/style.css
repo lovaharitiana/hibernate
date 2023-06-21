@@ -7,7 +7,7 @@ body{
 table{
 	border: 1px solid black;
 	margin: 0 auto;
-	margin-top: 100px;
+	
 }
 
 thead{
@@ -22,3 +22,5 @@ th, td{
 tfoot{
 	text-align: center;
 }
+
+ 
