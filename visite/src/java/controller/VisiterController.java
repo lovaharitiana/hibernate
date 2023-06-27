@@ -10,6 +10,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import javax.servlet.ServletException;
@@ -92,19 +93,24 @@ public class VisiterController extends HttpServlet {
 
             }
 
-        } else if (request.getParameter("for").equalsIgnoreCase("delete")) {
+        } else if (request.getParameter("for") != null && request.getParameter("for").equalsIgnoreCase("delete")) {
             int id = Integer.parseInt(request.getParameter("id"));
-            Visiter visite = VisiterDao.findVisiter(id);
-
-            boolean status = new VisiterDao().delete(visite);
+            Visiter v = VisiterDao.findVisiter(id);
+            boolean status = new VisiterDao().delete(v);
             if (status) {
-                request.getSession().setAttribute("sm", "Visite supprimée avec succès");
+                request.getSession().setAttribute("sm", "Visite supprimé avec succès");
             } else {
-                request.getSession().setAttribute("em", "Erreur de suppression de la visite");
+                request.getSession().setAttribute("em", "Erreur de suppression du visite");
             }
+            response.sendRedirect(request.getContextPath() + "/listeVis.jsp");
+        } else if (request.getParameter("startDate") != null && request.getParameter("endDate") != null) {
+            String startDate = request.getParameter("startDate");
+            String endDate = request.getParameter("endDate");
+            ArrayList<Visiter> searchResults = VisiterDao.searchVisiterByDates(startDate, endDate);
+            request.setAttribute("searchResults", searchResults);
+            request.getRequestDispatcher("/listeVis.jsp").forward(request, response);
+        }
 
-           response.sendRedirect(request.getContextPath() + "/listeVis.jsp");
-       }
     }
 
     @Override

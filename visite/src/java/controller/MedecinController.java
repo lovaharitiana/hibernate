@@ -9,6 +9,7 @@ import dao.MedecinDao;
 import entity.Medecin;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -77,7 +78,7 @@ public class MedecinController extends HttpServlet {
 
             }
 
-            } else if (request.getParameter("for").equalsIgnoreCase("delete")) {
+            } else if (request.getParameter("for") != null && request.getParameter("for").equalsIgnoreCase("delete")) {
             int codeMed = Integer.parseInt(request.getParameter("codeMed"));
             Medecin m = MedecinDao.findMedecin(codeMed);
             boolean status = new MedecinDao().delete(m);
@@ -85,10 +86,13 @@ public class MedecinController extends HttpServlet {
                 request.getSession().setAttribute("sm", "Medecin supprimé avec succès");
             } else {
                 request.getSession().setAttribute("em", "Erreur de suppression du medecin");
-
             }
+            response.sendRedirect(request.getContextPath() + "/listeMed.jsp");
+        }else if (request.getParameter("search") != null) {
+            String searchTerm = request.getParameter("search");
+            ArrayList<Medecin> searchResults = MedecinDao.searchMedecin(searchTerm);
+            request.setAttribute("searchResults", searchResults);
             request.getRequestDispatcher("/listeMed.jsp").forward(request, response);
-
         }
 
     }

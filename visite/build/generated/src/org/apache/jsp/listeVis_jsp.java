@@ -67,7 +67,7 @@ public final class listeVis_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("        <link rel=\"stylesheet\" type=\"text/css\"\n");
       out.write("              href=\"");
       out.print(request.getContextPath());
-      out.write("/patient.css\" />\n");
+      out.write("/visiter.css\" />\n");
       out.write("\n");
       out.write("        <title> Liste Visiter </title>\n");
       out.write("    </head>\n");
@@ -82,75 +82,105 @@ public final class listeVis_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("        <meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\">\n");
       out.write("        <link rel=\"stylesheet\" type=\"text/css\" href=\"");
       out.print(request.getContextPath());
-      out.write("/menu.css\"/>\n");
-      out.write("        \n");
-      out.write("        \n");
+      out.write("/cssMenu.css\"/>\n");
+      out.write("        <link rel=\"stylesheet\" href=\"https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css\">\n");
+      out.write("\n");
+      out.write("\n");
       out.write("    </head>\n");
       out.write("    <body>\n");
-      out.write("         <div class=\"navbar\">\n");
+      out.write("        <div class=\"navbar\" >\n");
       out.write("            <div class=\"logo\">\n");
       out.write("            </div>\n");
-      out.write("            <div class=\"bouton_nav\">\n");
-      out.write("                <a href=\"#\">Accueil</a>\n");
-      out.write("                <a href=\"#\">Patients</a>\n");
-      out.write("                <a href=\"#\">Médecins</a>\n");
-      out.write("                <a href=\"#\">Visiter</a>\n");
+      out.write("            <div class=\"bouton_nav\" >\n");
+      out.write("                <a href=\"index.jsp\"><i class=\"fas fa-home\"></i> Accueil</a>\n");
+      out.write("                <a href=\"listePat.jsp\"><i class=\"fas fa-users\"></i> Patients</a>\n");
+      out.write("                <a href=\"listeMed.jsp\"><i class=\"fas fa-user-md\"></i> Médecins</a>\n");
+      out.write("                <a href=\"listeVis.jsp\"><i class=\"fas fa-calendar-alt\"></i> Visiter</a>\n");
       out.write("            </div>\n");
       out.write("        </div>\n");
+      out.write("\n");
       out.write("    </body>\n");
       out.write("</html>\n");
       out.write("\n");
-      out.write("        <div class=\"content\">\n");
-      out.write("            <table border=\"1\" style=\"border-collapse: collapse;font-family: Times New Roman;\" width=\"90%\">\n");
-      out.write("                <thead>\n");
-      out.write("                    <tr>\n");
-      out.write("                        <th colspan=\"6\">Liste Visiter </th>\n");
-      out.write("                    </tr>\n");
-      out.write("                    <tr>\n");
-      out.write("                        <th>Code Visiter</th>\n");
-      out.write("                        <th>Nom Medecin</th>\n");
-      out.write("                        <th>Nom Patient</th>\n");
-      out.write("                        <th>Date</th>\n");
-      out.write("                        <th colspan=\"2\">Actions</th>\n");
-      out.write("                    </tr>\n");
-      out.write("                </thead>\n");
-      out.write("                <tbody>\n");
-      out.write("                    ");
-
-                        ArrayList<Visiter> list = VisiterDao.getAllVisiter();
-                        for (Visiter v : list) {
-
-                    
+      out.write("        <div class=\"content\" >\n");
       out.write("\n");
-      out.write("                    <tr style=\"text-align: center;\">\n");
-      out.write("                        <td>");
+      out.write("\n");
+      out.write("            <div class=\"div3\">\n");
+      out.write("                <form method=\"GET\" action=\"VisiterController\" class=\"mr-2\">\n");
+      out.write("                    <input type=\"date\" name=\"startDate\" placeholder=\"Date de début (AAAA-MM-JJ)\" class=\"input\" />\n");
+      out.write("                    <input type=\"date\" name=\"endDate\" placeholder=\"Date de fin (AAAA-MM-JJ)\" class=\"input\" />\n");
+      out.write("                    <button type=\"submit\" style=\"padding: 10px 20px; background-color: #767928; color: white; border: none; border-radius: 4px; font-family: Times New Roman;\">\n");
+      out.write("                        <i class=\"fa fa-search\" style=\"margin-right: 5px;\"></i>\n");
+      out.write("                        Rechercher\n");
+      out.write("                    </button>\n");
+      out.write("                </form>\n");
+      out.write("                <a href=\"insertVis.jsp\">\n");
+      out.write("                    <button style=\"padding: 10px 20px; background-color: #2E5930; color: white; border: none; border-radius: 4px; font-family: Times New Roman; margin-left: 530px\">\n");
+      out.write("                        <i class=\"fa fa-user-plus\" style=\"margin-right: 5px;\"></i>\n");
+      out.write("                        Ajouter Nouveau Visite\n");
+      out.write("                    </button>\n");
+      out.write("                </a>\n");
+      out.write("            </div>\n");
+      out.write("        </div>\n");
+      out.write("        <table border=\"1\" style=\"border-collapse: collapse;font-family: Times New Roman;\" width=\"80%\">\n");
+      out.write("            <thead>\n");
+      out.write("                <tr>\n");
+      out.write("                    <th colspan=\"6\">Liste Visiter </th>\n");
+      out.write("                </tr>\n");
+      out.write("                <tr>\n");
+      out.write("                    <th>Code Visiter</th>\n");
+      out.write("                    <th>Nom Medecin</th>\n");
+      out.write("                    <th>Nom Patient</th>\n");
+      out.write("                    <th>Date</th>\n");
+      out.write("                    <th colspan=\"2\">Actions</th>\n");
+      out.write("                </tr>\n");
+      out.write("            </thead>\n");
+      out.write("            <tbody>\n");
+      out.write("                ");
+
+                    String startDate = request.getParameter("startDate");
+                    String endDate = request.getParameter("endDate");
+                    ArrayList<Visiter> list;
+
+                    if (startDate != null && !startDate.isEmpty() && endDate != null && !endDate.isEmpty()) {
+                        list = VisiterDao.searchVisiterByDates(startDate, endDate);
+                    } else {
+                        list = VisiterDao.getAllVisiter();
+                    }
+
+                    for (Visiter v : list) {
+                
+      out.write("\n");
+      out.write("\n");
+      out.write("                <tr style=\"text-align: center;\">\n");
+      out.write("                    <td>");
       out.print( v.getId());
       out.write("</td>\n");
-      out.write("                        <td>");
+      out.write("                    <td>");
       out.print( v.getMedecin().getNomMed());
       out.write("</td>\n");
-      out.write("                        <td>");
+      out.write("                    <td>");
       out.print( v.getPatient().getNomPat());
       out.write("</td>\n");
-      out.write("                        <td>");
+      out.write("                    <td>");
       out.print( v.getDate());
       out.write("</td>\n");
-      out.write("                        <td><a href=\"editVis.jsp?id=");
+      out.write("                    <td><a href=\"editVis.jsp?id=");
       out.print( v.getId());
-      out.write("\"><button>Modifier</button></a></td>\n");
-      out.write("                        <td><button onclick=\"confirmDelete('");
+      out.write("\"><i class=\"fas fa-edit\" title=\"Modifier\"></i></a></td>\n");
+      out.write("                    <td><button onclick=\"confirmDelete('");
       out.print( v.getId());
-      out.write("')\">Supprimer</button></td>\n");
-      out.write("                 \n");
-      out.write("                    </tr>\n");
-      out.write("                    ");
+      out.write("')\"><i class=\"fas fa-trash\" title=\"Supprimer\"></i></button></td>  </tr>\n");
+      out.write("\n");
+      out.write("                </tr>\n");
+      out.write("                ");
  }
       out.write("\n");
-      out.write("                </tbody>\n");
-      out.write("               \n");
-      out.write("            </table>\n");
-      out.write("        </div>\n");
-      out.write("                 <script>\n");
+      out.write("            </tbody>\n");
+      out.write("\n");
+      out.write("        </table>\n");
+      out.write("\n");
+      out.write("        <script>\n");
       out.write("            ");
  if (request.getParameter("successMessage") != null) {
       out.write("\n");
@@ -178,7 +208,7 @@ public final class listeVis_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("            function confirmDelete(id) {\n");
       out.write("                var confirmation = confirm(\"Êtes-vous sûr de vouloir supprimer ce visite ?\");\n");
       out.write("                if (confirmation) {\n");
-      out.write("                    window.location.href = \"VisiteController?id=\" + id + \"&for=delete\";\n");
+      out.write("                    window.location.href = \"VisiterController?id=\" + id + \"&for=delete\";\n");
       out.write("                }\n");
       out.write("            }\n");
       out.write("        </script>\n");

@@ -23,6 +23,8 @@
                 <a href="listePat.jsp"><i class="fas fa-users"></i> Patients</a>
                 <a href="listeMed.jsp"><i class="fas fa-user-md"></i> Médecins</a>
                 <a href="listeVis.jsp"><i class="fas fa-calendar-alt"></i> Visiter</a>
+                <a href="index.jsp"><i class="fas fa-sign-out-alt"></i> Déconnexion</a>
+
             </div>
         </div>
 
