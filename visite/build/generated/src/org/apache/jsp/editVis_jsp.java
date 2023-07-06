@@ -19,26 +19,10 @@ public final class editVis_jsp extends org.apache.jasper.runtime.HttpJspBase
     _jspx_dependants.add("/menu.jsp");
   }
 
-  private org.apache.jasper.runtime.TagHandlerPool _jspx_tagPool_c_remove_var_scope_nobody;
-  private org.apache.jasper.runtime.TagHandlerPool _jspx_tagPool_c_out_value_nobody;
-  private org.apache.jasper.runtime.TagHandlerPool _jspx_tagPool_c_if_test;
-
   private org.glassfish.jsp.api.ResourceInjector _jspx_resourceInjector;
 
   public java.util.List<String> getDependants() {
     return _jspx_dependants;
-  }
-
-  public void _jspInit() {
-    _jspx_tagPool_c_remove_var_scope_nobody = org.apache.jasper.runtime.TagHandlerPool.getTagHandlerPool(getServletConfig());
-    _jspx_tagPool_c_out_value_nobody = org.apache.jasper.runtime.TagHandlerPool.getTagHandlerPool(getServletConfig());
-    _jspx_tagPool_c_if_test = org.apache.jasper.runtime.TagHandlerPool.getTagHandlerPool(getServletConfig());
-  }
-
-  public void _jspDestroy() {
-    _jspx_tagPool_c_remove_var_scope_nobody.release();
-    _jspx_tagPool_c_out_value_nobody.release();
-    _jspx_tagPool_c_if_test.release();
   }
 
   public void _jspService(HttpServletRequest request, HttpServletResponse response)
@@ -82,7 +66,7 @@ public final class editVis_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("        <link rel=\"stylesheet\" type=\"text/css\"\n");
       out.write("              href=\"");
       out.print(request.getContextPath());
-      out.write("/style.css\" />\n");
+      out.write("/style1.css\" />\n");
       out.write("    </head>\n");
       out.write("    <body>\n");
       out.write("        ");
@@ -95,21 +79,25 @@ public final class editVis_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("        <meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\">\n");
       out.write("        <link rel=\"stylesheet\" type=\"text/css\" href=\"");
       out.print(request.getContextPath());
-      out.write("/menu.css\"/>\n");
-      out.write("        \n");
-      out.write("        \n");
+      out.write("/navbar.css\"/>\n");
+      out.write("        <link rel=\"stylesheet\" href=\"https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css\">\n");
+      out.write("\n");
+      out.write("\n");
       out.write("    </head>\n");
       out.write("    <body>\n");
-      out.write("         <div class=\"navbar\">\n");
+      out.write("        <div class=\"navbar\" >\n");
       out.write("            <div class=\"logo\">\n");
       out.write("            </div>\n");
-      out.write("            <div class=\"bouton_nav\">\n");
-      out.write("                <a href=\"#\">Accueil</a>\n");
-      out.write("                <a href=\"#\">Patients</a>\n");
-      out.write("                <a href=\"#\">Médecins</a>\n");
-      out.write("                <a href=\"#\">Visiter</a>\n");
+      out.write("            <div class=\"bouton_nav\" >\n");
+      out.write("                <a href=\"index.jsp\"><i class=\"fas fa-home\"></i> Accueil</a>\n");
+      out.write("                <a href=\"listePat.jsp\"><i class=\"fas fa-users\"></i> Patients</a>\n");
+      out.write("                <a href=\"listeMed.jsp\"><i class=\"fas fa-user-md\"></i> Médecins</a>\n");
+      out.write("                <a href=\"listeVis.jsp\"><i class=\"fas fa-calendar-alt\"></i> Visiter</a>\n");
+      out.write("                <a href=\"index.jsp\"><i class=\"fas fa-sign-out-alt\"></i> Déconnexion</a>\n");
+      out.write("\n");
       out.write("            </div>\n");
       out.write("        </div>\n");
+      out.write("\n");
       out.write("    </body>\n");
       out.write("</html>\n");
       out.write("\n");
@@ -175,31 +163,22 @@ public final class editVis_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                        <tr>\n");
       out.write("                            <td></td>\n");
       out.write("                            <td></td>\n");
-      out.write("                            <td><input type=\"submit\" name=\"update\" value=\"Modifier\" /></td>\n");
-      out.write("                        </tr>\n");
-      out.write("                    </tbody>\n");
-      out.write("                    <tfoot>\n");
-      out.write("                        <tr>\n");
-      out.write("                            <td colspan=\"3\">\n");
-      out.write("                                <font color=\"blue\">\n");
-      out.write("                                ");
-      if (_jspx_meth_c_if_0(_jspx_page_context))
-        return;
-      out.write("\n");
-      out.write("                                </font>\n");
-      out.write("                                <font color=\"red\">\n");
-      out.write("                                ");
-      if (_jspx_meth_c_if_1(_jspx_page_context))
-        return;
-      out.write("\n");
-      out.write("                                </font>\n");
-      out.write("\n");
+      out.write("                            <td><input type=\"submit\" name=\"update\" value=\"Modifier\" />\n");
+      out.write("                                <button type=\"button\" onclick=\"cancelForm()\">Annuler</button>\n");
       out.write("                            </td>\n");
       out.write("                        </tr>\n");
-      out.write("                    </tfoot>\n");
+      out.write("                    </tbody>\n");
+      out.write("\n");
       out.write("                </table>\n");
       out.write("            </form>\n");
       out.write("        </div>\n");
+      out.write("        <script>\n");
+      out.write("            function cancelForm() {\n");
+      out.write("                window.location.href = \"");
+      out.print(request.getContextPath());
+      out.write("/listeVis.jsp\";\n");
+      out.write("            }\n");
+      out.write("        </script>\n");
       out.write("    </body>\n");
       out.write("</html>\n");
     } catch (Throwable t) {
@@ -213,151 +192,5 @@ public final class editVis_jsp extends org.apache.jasper.runtime.HttpJspBase
     } finally {
       _jspxFactory.releasePageContext(_jspx_page_context);
     }
-  }
-
-  private boolean _jspx_meth_c_if_0(PageContext _jspx_page_context)
-          throws Throwable {
-    PageContext pageContext = _jspx_page_context;
-    JspWriter out = _jspx_page_context.getOut();
-    //  c:if
-    org.apache.taglibs.standard.tag.rt.core.IfTag _jspx_th_c_if_0 = (org.apache.taglibs.standard.tag.rt.core.IfTag) _jspx_tagPool_c_if_test.get(org.apache.taglibs.standard.tag.rt.core.IfTag.class);
-    _jspx_th_c_if_0.setPageContext(_jspx_page_context);
-    _jspx_th_c_if_0.setParent(null);
-    _jspx_th_c_if_0.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${sessionScope.sm != null}", java.lang.Boolean.class, (PageContext)_jspx_page_context, null)).booleanValue());
-    int _jspx_eval_c_if_0 = _jspx_th_c_if_0.doStartTag();
-    if (_jspx_eval_c_if_0 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
-      do {
-        out.write("\n");
-        out.write("                                    ");
-        if (_jspx_meth_c_out_0((javax.servlet.jsp.tagext.JspTag) _jspx_th_c_if_0, _jspx_page_context))
-          return true;
-        out.write("\n");
-        out.write("                                    ");
-        if (_jspx_meth_c_remove_0((javax.servlet.jsp.tagext.JspTag) _jspx_th_c_if_0, _jspx_page_context))
-          return true;
-        out.write("\n");
-        out.write("\n");
-        out.write("                                ");
-        int evalDoAfterBody = _jspx_th_c_if_0.doAfterBody();
-        if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
-          break;
-      } while (true);
-    }
-    if (_jspx_th_c_if_0.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
-      _jspx_tagPool_c_if_test.reuse(_jspx_th_c_if_0);
-      return true;
-    }
-    _jspx_tagPool_c_if_test.reuse(_jspx_th_c_if_0);
-    return false;
-  }
-
-  private boolean _jspx_meth_c_out_0(javax.servlet.jsp.tagext.JspTag _jspx_th_c_if_0, PageContext _jspx_page_context)
-          throws Throwable {
-    PageContext pageContext = _jspx_page_context;
-    JspWriter out = _jspx_page_context.getOut();
-    //  c:out
-    org.apache.taglibs.standard.tag.rt.core.OutTag _jspx_th_c_out_0 = (org.apache.taglibs.standard.tag.rt.core.OutTag) _jspx_tagPool_c_out_value_nobody.get(org.apache.taglibs.standard.tag.rt.core.OutTag.class);
-    _jspx_th_c_out_0.setPageContext(_jspx_page_context);
-    _jspx_th_c_out_0.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_if_0);
-    _jspx_th_c_out_0.setValue((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${sessionScope.sm}", java.lang.Object.class, (PageContext)_jspx_page_context, null));
-    int _jspx_eval_c_out_0 = _jspx_th_c_out_0.doStartTag();
-    if (_jspx_th_c_out_0.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
-      _jspx_tagPool_c_out_value_nobody.reuse(_jspx_th_c_out_0);
-      return true;
-    }
-    _jspx_tagPool_c_out_value_nobody.reuse(_jspx_th_c_out_0);
-    return false;
-  }
-
-  private boolean _jspx_meth_c_remove_0(javax.servlet.jsp.tagext.JspTag _jspx_th_c_if_0, PageContext _jspx_page_context)
-          throws Throwable {
-    PageContext pageContext = _jspx_page_context;
-    JspWriter out = _jspx_page_context.getOut();
-    //  c:remove
-    org.apache.taglibs.standard.tag.common.core.RemoveTag _jspx_th_c_remove_0 = (org.apache.taglibs.standard.tag.common.core.RemoveTag) _jspx_tagPool_c_remove_var_scope_nobody.get(org.apache.taglibs.standard.tag.common.core.RemoveTag.class);
-    _jspx_th_c_remove_0.setPageContext(_jspx_page_context);
-    _jspx_th_c_remove_0.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_if_0);
-    _jspx_th_c_remove_0.setScope("session");
-    _jspx_th_c_remove_0.setVar("sm");
-    int _jspx_eval_c_remove_0 = _jspx_th_c_remove_0.doStartTag();
-    if (_jspx_th_c_remove_0.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
-      _jspx_tagPool_c_remove_var_scope_nobody.reuse(_jspx_th_c_remove_0);
-      return true;
-    }
-    _jspx_tagPool_c_remove_var_scope_nobody.reuse(_jspx_th_c_remove_0);
-    return false;
-  }
-
-  private boolean _jspx_meth_c_if_1(PageContext _jspx_page_context)
-          throws Throwable {
-    PageContext pageContext = _jspx_page_context;
-    JspWriter out = _jspx_page_context.getOut();
-    //  c:if
-    org.apache.taglibs.standard.tag.rt.core.IfTag _jspx_th_c_if_1 = (org.apache.taglibs.standard.tag.rt.core.IfTag) _jspx_tagPool_c_if_test.get(org.apache.taglibs.standard.tag.rt.core.IfTag.class);
-    _jspx_th_c_if_1.setPageContext(_jspx_page_context);
-    _jspx_th_c_if_1.setParent(null);
-    _jspx_th_c_if_1.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${sessionScope.em != null}", java.lang.Boolean.class, (PageContext)_jspx_page_context, null)).booleanValue());
-    int _jspx_eval_c_if_1 = _jspx_th_c_if_1.doStartTag();
-    if (_jspx_eval_c_if_1 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
-      do {
-        out.write("\n");
-        out.write("                                    ");
-        if (_jspx_meth_c_out_1((javax.servlet.jsp.tagext.JspTag) _jspx_th_c_if_1, _jspx_page_context))
-          return true;
-        out.write("\n");
-        out.write("                                    ");
-        if (_jspx_meth_c_remove_1((javax.servlet.jsp.tagext.JspTag) _jspx_th_c_if_1, _jspx_page_context))
-          return true;
-        out.write("\n");
-        out.write("\n");
-        out.write("                                ");
-        int evalDoAfterBody = _jspx_th_c_if_1.doAfterBody();
-        if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
-          break;
-      } while (true);
-    }
-    if (_jspx_th_c_if_1.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
-      _jspx_tagPool_c_if_test.reuse(_jspx_th_c_if_1);
-      return true;
-    }
-    _jspx_tagPool_c_if_test.reuse(_jspx_th_c_if_1);
-    return false;
-  }
-
-  private boolean _jspx_meth_c_out_1(javax.servlet.jsp.tagext.JspTag _jspx_th_c_if_1, PageContext _jspx_page_context)
-          throws Throwable {
-    PageContext pageContext = _jspx_page_context;
-    JspWriter out = _jspx_page_context.getOut();
-    //  c:out
-    org.apache.taglibs.standard.tag.rt.core.OutTag _jspx_th_c_out_1 = (org.apache.taglibs.standard.tag.rt.core.OutTag) _jspx_tagPool_c_out_value_nobody.get(org.apache.taglibs.standard.tag.rt.core.OutTag.class);
-    _jspx_th_c_out_1.setPageContext(_jspx_page_context);
-    _jspx_th_c_out_1.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_if_1);
-    _jspx_th_c_out_1.setValue((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${sessionScope.em}", java.lang.Object.class, (PageContext)_jspx_page_context, null));
-    int _jspx_eval_c_out_1 = _jspx_th_c_out_1.doStartTag();
-    if (_jspx_th_c_out_1.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
-      _jspx_tagPool_c_out_value_nobody.reuse(_jspx_th_c_out_1);
-      return true;
-    }
-    _jspx_tagPool_c_out_value_nobody.reuse(_jspx_th_c_out_1);
-    return false;
-  }
-
-  private boolean _jspx_meth_c_remove_1(javax.servlet.jsp.tagext.JspTag _jspx_th_c_if_1, PageContext _jspx_page_context)
-          throws Throwable {
-    PageContext pageContext = _jspx_page_context;
-    JspWriter out = _jspx_page_context.getOut();
-    //  c:remove
-    org.apache.taglibs.standard.tag.common.core.RemoveTag _jspx_th_c_remove_1 = (org.apache.taglibs.standard.tag.common.core.RemoveTag) _jspx_tagPool_c_remove_var_scope_nobody.get(org.apache.taglibs.standard.tag.common.core.RemoveTag.class);
-    _jspx_th_c_remove_1.setPageContext(_jspx_page_context);
-    _jspx_th_c_remove_1.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_if_1);
-    _jspx_th_c_remove_1.setScope("session");
-    _jspx_th_c_remove_1.setVar("em");
-    int _jspx_eval_c_remove_1 = _jspx_th_c_remove_1.doStartTag();
-    if (_jspx_th_c_remove_1.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
-      _jspx_tagPool_c_remove_var_scope_nobody.reuse(_jspx_th_c_remove_1);
-      return true;
-    }
-    _jspx_tagPool_c_remove_var_scope_nobody.reuse(_jspx_th_c_remove_1);
-    return false;
   }
 }

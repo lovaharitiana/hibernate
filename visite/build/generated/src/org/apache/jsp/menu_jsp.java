@@ -50,7 +50,7 @@ public final class menu_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("        <meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\">\n");
       out.write("        <link rel=\"stylesheet\" type=\"text/css\" href=\"");
       out.print(request.getContextPath());
-      out.write("/cssMenu.css\"/>\n");
+      out.write("/navbar.css\"/>\n");
       out.write("        <link rel=\"stylesheet\" href=\"https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css\">\n");
       out.write("\n");
       out.write("\n");
@@ -64,7 +64,7 @@ public final class menu_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                <a href=\"listePat.jsp\"><i class=\"fas fa-users\"></i> Patients</a>\n");
       out.write("                <a href=\"listeMed.jsp\"><i class=\"fas fa-user-md\"></i> Médecins</a>\n");
       out.write("                <a href=\"listeVis.jsp\"><i class=\"fas fa-calendar-alt\"></i> Visiter</a>\n");
-      out.write("                <a href=\"logout.jsp\"><i class=\"fas fa-sign-out-alt\"></i> Déconnexion</a>\n");
+      out.write("                <a href=\"index.jsp\"><i class=\"fas fa-sign-out-alt\"></i> Déconnexion</a>\n");
       out.write("\n");
       out.write("            </div>\n");
       out.write("        </div>\n");

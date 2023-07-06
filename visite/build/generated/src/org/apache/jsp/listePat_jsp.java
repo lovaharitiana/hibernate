@@ -15,9 +15,8 @@ public final class listePat_jsp extends org.apache.jasper.runtime.HttpJspBase
   private static java.util.List<String> _jspx_dependants;
 
   static {
-    _jspx_dependants = new java.util.ArrayList<String>(2);
+    _jspx_dependants = new java.util.ArrayList<String>(1);
     _jspx_dependants.add("/menu.jsp");
-    _jspx_dependants.add("/footer.jsp");
   }
 
   private org.glassfish.jsp.api.ResourceInjector _jspx_resourceInjector;
@@ -62,7 +61,7 @@ public final class listePat_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("        <meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\">\n");
       out.write("        <link rel=\"stylesheet\" type=\"text/css\" href=\"");
       out.print(request.getContextPath());
-      out.write("/patient.css\"/>\n");
+      out.write("/cssPatient.css\"/>\n");
       out.write("        <title>Liste Patient</title>\n");
       out.write("        \n");
       out.write("\n");
@@ -81,7 +80,7 @@ public final class listePat_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("        <meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\">\n");
       out.write("        <link rel=\"stylesheet\" type=\"text/css\" href=\"");
       out.print(request.getContextPath());
-      out.write("/cssMenu.css\"/>\n");
+      out.write("/navbar.css\"/>\n");
       out.write("        <link rel=\"stylesheet\" href=\"https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css\">\n");
       out.write("\n");
       out.write("\n");
@@ -95,7 +94,7 @@ public final class listePat_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                <a href=\"listePat.jsp\"><i class=\"fas fa-users\"></i> Patients</a>\n");
       out.write("                <a href=\"listeMed.jsp\"><i class=\"fas fa-user-md\"></i> Médecins</a>\n");
       out.write("                <a href=\"listeVis.jsp\"><i class=\"fas fa-calendar-alt\"></i> Visiter</a>\n");
-      out.write("                <a href=\"logout.jsp\"><i class=\"fas fa-sign-out-alt\"></i> Déconnexion</a>\n");
+      out.write("                <a href=\"index.jsp\"><i class=\"fas fa-sign-out-alt\"></i> Déconnexion</a>\n");
       out.write("\n");
       out.write("            </div>\n");
       out.write("        </div>\n");
@@ -225,58 +224,7 @@ public final class listePat_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("        </script>\n");
       out.write("\n");
       out.write("\n");
-      out.write("        ");
-      out.write("\n");
-      out.write("<!DOCTYPE html>\n");
-      out.write("<html>\n");
-      out.write("<head>\n");
-      out.write("    <meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\">\n");
-      out.write("    <title>Gestion de Médecin - Footer</title>\n");
-      out.write("    <style>\n");
-      out.write("        * {\n");
-      out.write("            margin: 0;\n");
-      out.write("            padding: 0;\n");
-      out.write("        }\n");
-      out.write("\n");
-      out.write("        html, body {\n");
-      out.write("            height: 100%;\n");
-      out.write("        }\n");
-      out.write("\n");
-      out.write("        .wrapper {\n");
-      out.write("            min-height: 100%;\n");
-      out.write("            position: relative;\n");
-      out.write("        }\n");
-      out.write("\n");
-      out.write("        .content {\n");
-      out.write("            padding-bottom: 60px; /* Hauteur de la footer */\n");
-      out.write("        }\n");
-      out.write("\n");
-      out.write("        .footer {\n");
-      out.write("            position: absolute;\n");
-      out.write("            bottom: 0;\n");
-      out.write("            width: 100%;\n");
-      out.write("            height: 40px; /* Hauteur de la footer */\n");
-      out.write("            background-color: #f2f2f2;\n");
-      out.write("            padding: 10px;\n");
-      out.write("            text-align: center;\n");
-      out.write("        }\n");
-      out.write("\n");
-      out.write("        .footer p {\n");
-      out.write("            margin: 0;\n");
-      out.write("        }\n");
-      out.write("    </style>\n");
-      out.write("</head>\n");
-      out.write("<body>\n");
-      out.write("    <div class=\"wrapper\">\n");
-      out.write("        \n");
-      out.write("\n");
-      out.write("        <div class=\"footer\">\n");
-      out.write("            <p>© 2023 Votre Application de Gestion de Médecin.</p>\n");
-      out.write("        </div>\n");
-      out.write("    </div>\n");
-      out.write("</body>\n");
-      out.write("</html>\n");
-      out.write("\n");
+      out.write("      \n");
       out.write("\n");
       out.write("\n");
       out.write("\n");

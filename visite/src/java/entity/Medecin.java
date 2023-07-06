@@ -7,8 +7,10 @@ package entity;
 
 import java.util.HashSet;
 import java.util.Set;
-import org.hibernate.annotations.Entity;
+import javax.persistence.CascadeType;
 
+import org.hibernate.annotations.Entity;
+import javax.persistence.OneToMany;
 /**
  *
  * @author CE PC
@@ -21,7 +23,7 @@ public class Medecin {
     private String prenomMed;
     private String gradeMed;
     
-    
+    @OneToMany(mappedBy = "medecin", cascade = CascadeType.REMOVE)
     private Set<Visiter> visiter = new HashSet<>();
 
     public Medecin() {

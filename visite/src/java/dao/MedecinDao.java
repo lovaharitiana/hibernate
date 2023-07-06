@@ -8,6 +8,7 @@ package dao;
 import entity.Medecin;
 import java.util.ArrayList;
 import org.hibernate.Criteria;
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Restrictions;
@@ -52,21 +53,26 @@ public class MedecinDao {
     }
 
     public boolean delete(Medecin m) {
-
         try {
             SessionFactory factory = HibernateUtil.getSessionFactory();
             Session session = factory.openSession();
             session.beginTransaction();
+
+            // Supprimer les enregistrements liés dans la table visiter
+            Query query = session.createQuery("DELETE FROM Visiter WHERE medecin = :medecin");
+            query.setParameter("medecin", m);
+            query.executeUpdate();
+
+            // Supprimer le patient
             session.delete(m);
+
             session.getTransaction().commit();
             session.close();
             return true;
         } catch (Exception e) {
             return false;
         }
-
     }
-
     public static ArrayList getAllMedecin() {
         SessionFactory factory = HibernateUtil.getSessionFactory();
         Session session = factory.openSession();

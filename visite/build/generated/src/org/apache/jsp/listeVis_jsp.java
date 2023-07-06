@@ -96,6 +96,8 @@ public final class listeVis_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                <a href=\"listePat.jsp\"><i class=\"fas fa-users\"></i> Patients</a>\n");
       out.write("                <a href=\"listeMed.jsp\"><i class=\"fas fa-user-md\"></i> Médecins</a>\n");
       out.write("                <a href=\"listeVis.jsp\"><i class=\"fas fa-calendar-alt\"></i> Visiter</a>\n");
+      out.write("                <a href=\"index.jsp\"><i class=\"fas fa-sign-out-alt\"></i> Déconnexion</a>\n");
+      out.write("\n");
       out.write("            </div>\n");
       out.write("        </div>\n");
       out.write("\n");
@@ -115,7 +117,7 @@ public final class listeVis_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                    </button>\n");
       out.write("                </form>\n");
       out.write("                <a href=\"insertVis.jsp\">\n");
-      out.write("                    <button style=\"padding: 10px 20px; background-color: #2E5930; color: white; border: none; border-radius: 4px; font-family: Times New Roman; margin-left: 530px\">\n");
+      out.write("                    <button style=\"padding: 10px 20px; background-color: #2E5930; color: white; border: none; border-radius: 4px; font-family: Times New Roman; margin-left: 300px\">\n");
       out.write("                        <i class=\"fa fa-user-plus\" style=\"margin-right: 5px;\"></i>\n");
       out.write("                        Ajouter Nouveau Visite\n");
       out.write("                    </button>\n");

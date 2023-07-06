@@ -10,7 +10,7 @@
         <title>Modifie Patient</title>
 
         <link rel="stylesheet" type="text/css"
-              href="<%=request.getContextPath()%>/style.css" />
+              href="<%=request.getContextPath()%>/style1.css" />
     </head>
     <body>
         <%@include file="menu.jsp"%>

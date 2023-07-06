@@ -60,7 +60,15 @@ public class PatientDao {
             SessionFactory factory = HibernateUtil.getSessionFactory();
             Session session = factory.openSession();
             session.beginTransaction();
+
+            // Supprimer les enregistrements liés dans la table visiter
+            Query query = session.createQuery("DELETE FROM Visiter WHERE patient = :patient");
+            query.setParameter("patient", p);
+            query.executeUpdate();
+
+            // Supprimer le patient
             session.delete(p);
+
             session.getTransaction().commit();
             session.close();
             return true;
@@ -68,6 +76,7 @@ public class PatientDao {
             return false;
         }
     }
+
     public static ArrayList getAllPatient() {
         SessionFactory factory = HibernateUtil.getSessionFactory();
         Session session = factory.openSession();
@@ -84,22 +93,21 @@ public class PatientDao {
         return p;
     }
 
-   public static ArrayList<Patient> searchPatient(String searchTerm) {
-    SessionFactory factory = HibernateUtil.getSessionFactory();
-    Session session = factory.openSession();
-    Criteria criteria = session.createCriteria(Patient.class);
+    public static ArrayList<Patient> searchPatient(String searchTerm) {
+        SessionFactory factory = HibernateUtil.getSessionFactory();
+        Session session = factory.openSession();
+        Criteria criteria = session.createCriteria(Patient.class);
 
-    try {
-        int codePat = Integer.parseInt(searchTerm);
-        criteria.add(Restrictions.eq("codePat", codePat));
-    } catch (NumberFormatException e) {
-        criteria.add(Restrictions.eq("nomPat", searchTerm));
+        try {
+            int codePat = Integer.parseInt(searchTerm);
+            criteria.add(Restrictions.eq("codePat", codePat));
+        } catch (NumberFormatException e) {
+            criteria.add(Restrictions.eq("nomPat", searchTerm));
+        }
+
+        ArrayList<Patient> pList = (ArrayList<Patient>) criteria.list();
+        session.close();
+        return pList;
     }
-
-    ArrayList<Patient> pList = (ArrayList<Patient>) criteria.list();
-    session.close();
-    return pList;
-}
-
 
 }

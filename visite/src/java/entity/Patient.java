@@ -7,6 +7,8 @@ package entity;
 
 import java.util.HashSet;
 import java.util.Set;
+import javax.persistence.CascadeType;
+import javax.persistence.OneToMany;
 
 /**
  *
@@ -20,7 +22,7 @@ public class Patient {
     private String prenomPat;
     private String sexePat;
     private String adressePat;
-    
+   @OneToMany(mappedBy = "patient", cascade = CascadeType.REMOVE)
    private Set<Visiter> visiter = new HashSet<>();
 
     public Patient() {

@@ -1,0 +1,36 @@
+body{
+	padding: O;
+	margin: 0;
+	font-family: Times New Roman;
+}
+
+table{
+	border: 1px solid black;
+	margin: 0 auto;
+        margin-top: 100px;
+	
+}
+
+thead{
+	background: #365c5c;
+	color: white;
+}
+
+th, td{
+	padding: 10px;
+}
+
+tfoot{
+	text-align: center;
+}
+
+ /*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 6 juil. 2023, 13:57:28
+    Author     : CE PC
+*/
+
